@@ -1,3 +1,3 @@
-import { runCli } from '@subtis/cli'
+import { runCli } from '.'
 
 runCli()

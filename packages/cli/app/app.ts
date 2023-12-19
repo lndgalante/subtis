@@ -14,8 +14,7 @@ import { apiClient } from '@subtis/cli'
 const cliArgumentsSchema = z.union([
   z.object({
     f: z.string({
-      required_error: '🤔 El valor de -f debe ser una ruta de archivo válida',
-      invalid_type_error: '🤔 El valor de -f debe ser una ruta de archivo válida',
+      invalid_type_error: '🤔 El valor de -f debe ser una ruta de archivo válida.',
     }),
   }),
   z.object({
@@ -36,27 +35,30 @@ const cliArgumentsSchema = z.union([
 
 // core
 export async function runCli(): Promise<void> {
+  const loader = spinner()
+
   try {
     intro(`👋 Hola, soy ${chalk.magenta('Subtis')}`)
 
     const cliArgumentsResult = cliArgumentsSchema.safeParse(minimist(Bun.argv))
     if (!cliArgumentsResult.success) {
-      return outro(chalk.yellow(cliArgumentsResult.error.message))
+  	 	 return outro(chalk.yellow(cliArgumentsResult.error.message))
     }
+    const cliArguments = cliArgumentsResult.data
 
     const fileNameResult = videoFileNameSchema.safeParse(
-      'file' in cliArgumentsResult.data
-        ? cliArgumentsResult.data.file
-        : cliArgumentsResult.data.f,
+      'file' in cliArguments
+        ? cliArguments.file
+        : cliArguments.f,
     )
     if (!fileNameResult.success) {
-      return outro(chalk.yellow('🤔 Extensión de video no soportada. Prueba con otro archivo'))
+        return outro(chalk.yellow('🤔 Extensión de video no soportada. Prueba con otro archivo'))
     }
+    const fileName = fileNameResult.data
 
-    const loader = spinner()
-    loader.start('🔎 Buscando subtitulos...')
+    loader.start('🔎 Buscando subtitulos')
 
-    const { data, status } = await apiClient.v1.subtitle.post({ fileName: fileNameResult.data })
+    const { data, status } = await apiClient.v1.subtitle.post({ fileName })
     if (data === null || 'message' in data) {
       const { title, description } = getMessageFromStatusCode(status)
       loader.stop(`😥 ${title}`)
