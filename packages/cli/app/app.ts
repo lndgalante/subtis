@@ -1,8 +1,7 @@
 import chalk from 'chalk'
 import minimist from 'minimist'
-import { ZodIssueCode, z } from 'zod'
+import { z } from 'zod'
 import { intro, outro, spinner } from '@clack/prompts'
-
 
 // shared
 import { videoFileNameSchema } from 'shared/movie'
@@ -57,7 +56,7 @@ export async function runCli(): Promise<void> {
         : cliArguments.f,
     )
     if (!fileNameResult.success) {
-        return outro(chalk.yellow('🤔 Extensión de video no soportada. Prueba con otro archivo'))
+      return outro(chalk.yellow('🤔 Extensión de video no soportada. Prueba con otro archivo'))
     }
     const fileName = fileNameResult.data
 
@@ -74,13 +73,11 @@ export async function runCli(): Promise<void> {
 
     const { Movies: { name, year }, resolution } = data
     outro(`🍿 Disfruta de ${chalk.bold(`${name} (${year})`)} en ${chalk.italic(resolution)} subtitulada`)
-  }
-  catch (error) {
+  } catch (error) {
     if (error instanceof Error) {
       outro(chalk.red(`🔴 ${error.message}`))
     }
-  }
-  finally {
+  } finally {
     process.exit()
   }
 }
