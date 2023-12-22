@@ -14,7 +14,7 @@
     "dev:api": "cd packages/api && bun dev",
     "dev:web:only": "cd packages/web && bun dev",
     "dev:web": "run-p dev:api dev:web:only",
-    "dev:cli": "bun --watch packages/cli/app.ts",
+    "dev:cli": "bun --watch packages/cli/run.ts",
     "dev:cli:params": "bun --watch packages/cli/app.ts --file ./Oppenheimer.2023.1080p.BluRay.DD5.1.x264-GalaxyRG.mkv",
     "dev:raycast:only": "cd packages/raycast && bun dev",
     "dev:raycast": "run-p dev:api dev:raycast:only",

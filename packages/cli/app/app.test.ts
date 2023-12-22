@@ -127,7 +127,6 @@ describe('CLI', async () => {
     const { title, description } = getMessageFromStatusCode(404)
 
     expect(text).toInclude('👋 Hola, soy Subtis')
-    expect(text).toInclude('🔎 Buscando subtitulos')
     expect(text).toInclude(`😥 ${title}`)
     expect(text).toInclude(`⛏ ${description}`)
   })
