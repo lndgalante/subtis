@@ -93,7 +93,7 @@ export const RELEASE_GROUPS = {
   "HEVC-CMRG": {
     is_supported: true,
     release_group_name: "HEVC-CMRG",
-    matches: ["HEVC-CMRG", "CMRG", "x264-CMRG", "x265-CMRG"],
+    matches: ["HEVC-CMRG", "CMRG", "x264-CMRG", "x265-CMRG", "H264-CMRG", "H265-CMRG", "CM", "H264-CM", "H265-CM"],
   },
   "HEVC-CM": {
     is_supported: true,
@@ -472,6 +472,46 @@ export const RELEASE_GROUPS = {
     is_supported: true,
     release_group_name: "NOGRP",
     matches: ["NOGRP", "x264-NOGRP", "x265-NOGRP", "1-NOGRP"],
+  },
+  ProLover: {
+    is_supported: true,
+    release_group_name: "ProLover",
+    matches: ["ProLover", "x264 - ProLover"],
+  },
+  SMURF: {
+    is_supported: true,
+    release_group_name: "SMURF",
+    matches: ["SMURF", "x264-SMURF", "x265-SMURF"],
+  },
+  RBG: {
+    is_supported: true,
+    release_group_name: "RBG",
+    matches: ["RBG", "x265-RBG", "x264-RBG"],
+  },
+  STUTTERSHIT: {
+    is_supported: true,
+    release_group_name: "STUTTERSHIT",
+    matches: ["STUTTERSHIT"],
+  },
+  FGT: {
+    is_supported: true,
+    release_group_name: "FGT",
+    matches: ["FGT", "DTS-FGT", "5.1-FGT", "H264-FGT"],
+  },
+  NTG: {
+    is_supported: true,
+    release_group_name: "NTG",
+    matches: ["NTG", "264-NTG", "x264-NTG", "x265-NTG", "H264-NTG"],
+  },
+  PHOENiX: {
+    is_supported: true,
+    release_group_name: "PHOENiX",
+    matches: ["PHOENiX", "264-PHOENiX", "X264-PHOENiX", "H264-PHOENiX"],
+  },
+  TEPES: {
+    is_supported: true,
+    release_group_name: "TEPES",
+    matches: ["TEPES", "264-TEPES", "X264-TEPES", "H264-TEPES", "265-TEPES"],
   },
 } as const;
 
